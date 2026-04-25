@@ -28,6 +28,12 @@ const QUICKUTILS_TOOLS = [
     desc: "Convert between binary, hexadecimal, decimal, and octal",
     emoji: "⚙️"
   },
+  {
+    name: "Medical Calculators",
+    url: "https://medcalc.quickutils.tools",
+    desc: "MELD 3.0, Child-Pugh, VOCAL-Penn, Hepatitis B Serology",
+    emoji: "⚕️"
+  },
 ];
 
 // Renders the "More free tools" grid, excluding the current tool by URL.
