@@ -3,359 +3,90 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Percentage Calculator – What is X% of Y?</title>
-  <meta name="description" content="Free percentage calculator. Find what percent of a number is, calculate percentage change, and more. Fast, accurate, and easy to use." />
-  <meta name="keywords" content="percentage calculator, what is 15% of 200, percent of a number, percentage change calculator, percent calculator" />
-  <link rel="canonical" href="https://percent.quickutils.tools/" />
-  <meta property="og:title" content="Percentage Calculator" />
-  <meta property="og:description" content="Calculate percentages instantly — what is X% of Y, percentage change, and more." />
+  <title>QuickUtils.tools — Free Online Utility Tools</title>
+  <meta name="description" content="Free, fast, no-signup online utility tools. Roman numeral converter, age calculator, word counter, binary converter, and more." />
+  <meta name="keywords" content="free online tools, utility tools, roman numeral converter, age calculator, word counter, binary converter" />
+  <link rel="canonical" href="https://quickutils.tools/" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8872742474601337" crossorigin="anonymous"></script>
+  <meta property="og:title" content="QuickUtils.tools — Free Online Utility Tools" />
+  <meta property="og:description" content="Free, fast, no-signup utility tools. No ads obscuring results. Just tools that work." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://percent.quickutils.tools/" />
+  <meta property="og:url" content="https://quickutils.tools/" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8872742474601337" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #FAFAFA; --white: #FFFFFF; --border: #E4E4E7;
-      --ink: #09090B; --ink-mid: #3F3F46; --ink-light: #71717A;
-      --violet: #7C3AED; --violet-light: #EDE9FE; --violet-border: #C4B5FD;
-      --radius: 8px; --radius-lg: 14px;
+      --bg: #F8F8F5; --white: #FFFFFF; --border: #E2E0D8;
+      --ink: #1A1A16; --ink-mid: #4A4A40; --ink-light: #8A8A80;
+      --accent: #2A5FD4; --accent-light: #EEF3FD;
+      --radius: 10px; --radius-lg: 16px;
     }
     body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--ink); min-height: 100vh; }
     .ad-banner-top { background: var(--white); border-bottom: 1px solid var(--border); text-align: center; padding: 8px 16px; font-size: 11px; color: var(--ink-light); letter-spacing: .08em; text-transform: uppercase; }
-    header { background: var(--ink); color: white; padding: 52px 24px 44px; text-align: center; }
-    .header-eyebrow { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: #A78BFA; margin-bottom: 16px; }
-    header h1 { font-family: 'Syne', sans-serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.1; margin-bottom: 14px; }
-    header h1 em { font-style: normal; color: #A78BFA; }
-    header p { font-size: 1rem; color: #A1A1AA; max-width: 420px; margin: 0 auto; font-weight: 300; }
-    main { max-width: 680px; margin: 0 auto; padding: 32px 20px 80px; }
-
-    /* MODE TABS */
-    .mode-tabs { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 20px; }
-    .mode-tab { padding: 13px 8px; background: var(--white); border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; color: var(--ink-light); transition: all .15s; border-right: 1px solid var(--border); }
-    .mode-tab:last-child { border-right: none; }
-    .mode-tab.active { background: var(--violet); color: white; }
-    .mode-tab:hover:not(.active) { background: var(--violet-light); color: var(--violet); }
-
-    /* CALC CARD */
-    .calc-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; margin-bottom: 20px; }
-    .calc-panel { display: none; }
-    .calc-panel.active { display: block; }
-    .calc-title { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 20px; }
-
-    /* EQUATION DISPLAY */
-    .equation { background: var(--violet-light); border: 1px solid var(--violet-border); border-radius: var(--radius); padding: 14px 18px; font-family: 'DM Mono', monospace; font-size: 0.95rem; color: var(--violet); margin-bottom: 20px; text-align: center; letter-spacing: .02em; }
-
-    /* INPUTS */
-    .input-row { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
-    .input-row label { font-size: 13px; font-weight: 500; color: var(--ink-mid); white-space: nowrap; }
-    .input-row input { flex: 1; min-width: 80px; padding: 10px 14px; font-family: 'DM Mono', monospace; font-size: 1.1rem; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg); color: var(--ink); outline: none; transition: border-color .15s; }
-    .input-row input:focus { border-color: var(--violet); }
-    .input-row .unit { font-size: 13px; color: var(--ink-light); }
-
-    /* CALC BUTTON */
-    .calc-btn { width: 100%; padding: 13px; background: var(--violet); color: white; border: none; border-radius: var(--radius); font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 500; cursor: pointer; transition: background .15s; margin-bottom: 16px; }
-    .calc-btn:hover { background: #6D28D9; }
-
-    /* RESULT */
-    .result-box { background: var(--ink); border-radius: var(--radius); padding: 20px; text-align: center; display: none; }
-    .result-box.show { display: block; }
-    .result-value { font-family: 'Syne', sans-serif; font-size: 2.8rem; font-weight: 800; color: #A78BFA; line-height: 1; margin-bottom: 6px; }
-    .result-label { font-size: 13px; color: #71717A; }
-
-    /* QUICK EXAMPLES */
-    .quick-section { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px; margin-bottom: 20px; }
-    .quick-title { font-size: 11px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 12px; }
-    .quick-grid { display: flex; flex-wrap: wrap; gap: 8px; }
-    .quick-chip { padding: 6px 14px; background: var(--bg); border: 1px solid var(--border); border-radius: 20px; font-size: 12px; cursor: pointer; color: var(--ink-mid); transition: all .12s; }
-    .quick-chip:hover { background: var(--violet-light); border-color: var(--violet-border); color: var(--violet); }
-
-    /* SHARE + BOOKMARK */
-    .utility-bar { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 20px; }
-    .utility-bar-label { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-light); width: 100%; margin-bottom: 4px; }
-    .share-btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 13px; border-radius: 20px; font-size: 12px; font-weight: 500; font-family: 'DM Sans', sans-serif; cursor: pointer; border: 1px solid var(--border); text-decoration: none; transition: opacity .15s, transform .1s; color: white; }
-    .share-btn:hover { opacity: .85; transform: translateY(-1px); }
-    .share-btn.tw { background: #000; border-color: #000; }
-    .share-btn.fb { background: #1877F2; border-color: #1877F2; }
-    .share-btn.wa { background: #25D366; border-color: #25D366; color: #000; }
-    .share-btn.rd { background: #FF4500; border-color: #FF4500; }
-    .share-btn.cl { background: transparent; color: var(--ink-mid); border-color: var(--border); }
-    .share-btn.cl.copied { border-color: #059669; color: #059669; }
-    .bookmark-tip { width: 100%; font-size: 12px; color: var(--ink-light); margin-top: 4px; }
-    .bookmark-tip kbd { background: var(--bg); border: 1px solid var(--border); border-radius: 3px; padding: 1px 6px; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--ink); }
-
-    /* RELATED */
-    .related-section { margin-bottom: 20px; }
-    .related-section h2 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 14px; }
-    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; }
-    .related-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; text-decoration: none; display: block; transition: border-color .15s; }
-    .related-card:hover { border-color: var(--violet); }
-    .related-card-emoji { font-size: 1.3rem; margin-bottom: 6px; }
-    .related-card-title { font-size: .85rem; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
-    .related-card-desc { font-size: 11px; color: var(--ink-light); }
-
-    /* EMBED */
-    .embed-section { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; margin-bottom: 20px; }
-    .embed-section h3 { font-size: 11px; font-weight: 500; color: var(--ink-light); margin-bottom: 10px; letter-spacing: .05em; text-transform: uppercase; }
-    .embed-code { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--ink-mid); word-break: break-all; margin-bottom: 10px; line-height: 1.6; }
-    .embed-copy-btn { padding: 7px 16px; background: transparent; border: 1px solid var(--border); border-radius: var(--radius); font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--ink-mid); cursor: pointer; transition: all .12s; }
-    .embed-copy-btn:hover { border-color: var(--violet); color: var(--violet); }
-    .embed-copy-btn.copied { border-color: #059669; color: #059669; }
-
-    .ad-inline { background: var(--bg); border: 1px dashed var(--border); border-radius: var(--radius-lg); padding: 16px; text-align: center; color: var(--ink-light); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; min-height: 90px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
-
-    /* FAQ */
-    .content-section { margin-bottom: 20px; }
-    .content-section h2 { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--ink); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
-    .content-section p { color: var(--ink-mid); font-size: .95rem; margin-bottom: 14px; line-height: 1.75; }
-    .faq-item { margin-bottom: 20px; }
-    .faq-item h3 { font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
-    .faq-item p { font-size: .9rem; color: var(--ink-light); margin: 0; line-height: 1.65; }
-
-    footer { background: var(--ink); color: #52525B; text-align: center; padding: 32px 24px; font-size: 13px; margin-top: 48px; }
-    footer a { color: #A78BFA; text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
-    footer .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; flex-wrap: wrap; }
+    header { padding: 72px 24px 56px; text-align: center; }
+    .logo { font-family: 'DM Mono', monospace; font-size: 13px; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; }
+    header h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 500; line-height: 1.15; margin-bottom: 16px; letter-spacing: -.02em; }
+    header h1 strong { font-weight: 500; }
+    header p { font-size: 1.05rem; color: var(--ink-light); max-width: 440px; margin: 0 auto; font-weight: 300; line-height: 1.7; }
+    main { max-width: 860px; margin: 0 auto; padding: 0 20px 80px; }
+    .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 48px; }
+    .tool-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px 24px; text-decoration: none; display: block; transition: border-color .15s, box-shadow .15s; }
+    .tool-card:hover { border-color: var(--accent); box-shadow: 0 4px 20px rgba(42,95,212,.08); }
+    .tool-emoji { font-size: 2rem; margin-bottom: 14px; display: block; }
+    .tool-name { font-size: 1.05rem; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+    .tool-desc { font-size: 0.875rem; color: var(--ink-light); line-height: 1.6; }
+    .tool-link { display: inline-flex; align-items: center; gap: 4px; margin-top: 16px; font-size: 12px; font-weight: 500; color: var(--accent); font-family: 'DM Mono', monospace; letter-spacing: .02em; }
+    .section-label { font-size: 11px; letter-spacing: .15em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 20px; }
+    .about-section { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px; margin-bottom: 32px; }
+    .about-section h2 { font-size: 1.2rem; font-weight: 500; margin-bottom: 12px; }
+    .about-section p { font-size: .95rem; color: var(--ink-mid); line-height: 1.75; margin-bottom: 10px; }
+    .ad-inline { background: var(--white); border: 1px dashed var(--border); border-radius: var(--radius-lg); padding: 16px; text-align: center; color: var(--ink-light); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; min-height: 90px; display: flex; align-items: center; justify-content: center; margin-bottom: 32px; }
+    footer { background: var(--ink); color: #666; text-align: center; padding: 32px 24px; font-size: 13px; }
+    footer a { color: #999; text-decoration: none; }
+    footer a:hover { color: white; }
+    footer .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 12px; flex-wrap: wrap; }
   </style>
 </head>
 <body>
   <div class="ad-banner-top">Advertisement</div>
   <header>
-    <p class="header-eyebrow">Free Online Tool</p>
-    <h1>Percentage<br><em>Calculator</em></h1>
-    <p>Three ways to calculate percentages — instantly, in your browser, no sign-up needed.</p>
+    <div class="logo">QuickUtils.tools</div>
+    <h1>Free tools that<br>just <strong>work</strong>.</h1>
+    <p>No sign-up. No bloat. Fast, accurate utility tools for everyday tasks.</p>
   </header>
   <main>
-
-    <!-- MODE TABS -->
-    <div class="mode-tabs">
-      <button class="mode-tab active" onclick="setMode(0)">What is X% of Y?</button>
-      <button class="mode-tab" onclick="setMode(1)">X is what % of Y?</button>
-      <button class="mode-tab" onclick="setMode(2)">% Change</button>
-    </div>
-
-    <!-- CALC CARD -->
-    <div class="calc-card">
-
-      <!-- MODE 0: What is X% of Y? -->
-      <div class="calc-panel active" id="panel-0">
-        <div class="calc-title">What is X% of Y?</div>
-        <div class="equation" id="eq-0">? = X% × Y</div>
-        <div class="input-row">
-          <label>What is</label>
-          <input type="number" id="p0-x" placeholder="15" oninput="calc0()" />
-          <span class="unit">% of</span>
-          <input type="number" id="p0-y" placeholder="200" oninput="calc0()" />
-          <span class="unit">?</span>
-        </div>
-        <div class="result-box show" id="res-0">
-          <div class="result-value" id="rv-0">—</div>
-          <div class="result-label" id="rl-0">Enter values above</div>
-        </div>
-      </div>
-
-      <!-- MODE 1: X is what % of Y? -->
-      <div class="calc-panel" id="panel-1">
-        <div class="calc-title">X is what percent of Y?</div>
-        <div class="equation" id="eq-1">% = (X ÷ Y) × 100</div>
-        <div class="input-row">
-          <input type="number" id="p1-x" placeholder="30" oninput="calc1()" />
-          <span class="unit">is what % of</span>
-          <input type="number" id="p1-y" placeholder="200" oninput="calc1()" />
-          <span class="unit">?</span>
-        </div>
-        <div class="result-box show" id="res-1">
-          <div class="result-value" id="rv-1">—</div>
-          <div class="result-label" id="rl-1">Enter values above</div>
-        </div>
-      </div>
-
-      <!-- MODE 2: Percentage change -->
-      <div class="calc-panel" id="panel-2">
-        <div class="calc-title">Percentage change from X to Y</div>
-        <div class="equation" id="eq-2">% change = ((Y − X) ÷ X) × 100</div>
-        <div class="input-row">
-          <label>From</label>
-          <input type="number" id="p2-x" placeholder="80" oninput="calc2()" />
-          <span class="unit">to</span>
-          <input type="number" id="p2-y" placeholder="100" oninput="calc2()" />
-          <span class="unit">?</span>
-        </div>
-        <div class="result-box show" id="res-2">
-          <div class="result-value" id="rv-2">—</div>
-          <div class="result-label" id="rl-2">Enter values above</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- QUICK EXAMPLES -->
-    <div class="quick-section">
-      <div class="quick-title">Common calculations</div>
-      <div class="quick-grid">
-        <button class="quick-chip" onclick="quickCalc(15,200)">15% of 200</button>
-        <button class="quick-chip" onclick="quickCalc(20,50)">20% of 50</button>
-        <button class="quick-chip" onclick="quickCalc(10,1000)">10% of 1000</button>
-        <button class="quick-chip" onclick="quickCalc(25,80)">25% of 80</button>
-        <button class="quick-chip" onclick="quickCalc(5,360)">5% of 360</button>
-        <button class="quick-chip" onclick="quickCalc(7.5,200)">7.5% of 200</button>
-      </div>
-    </div>
-
-    <!-- SHARE BAR -->
-    <div class="utility-bar">
-      <span class="utility-bar-label">Share this tool:</span>
-      <a class="share-btn tw" id="sh-tw" href="#" target="_blank" rel="noopener">𝕏 Twitter</a>
-      <a class="share-btn fb" id="sh-fb" href="#" target="_blank" rel="noopener">Facebook</a>
-      <a class="share-btn wa" id="sh-wa" href="#" target="_blank" rel="noopener">WhatsApp</a>
-      <a class="share-btn rd" id="sh-rd" href="#" target="_blank" rel="noopener">Reddit</a>
-      <button class="share-btn cl" id="sh-cl" onclick="copyLink()">Copy link</button>
-      <div class="bookmark-tip" id="bookmark-text">Press <kbd>Ctrl+D</kbd> to bookmark this tool.</div>
-    </div>
-
-    <!-- RELATED TOOLS -->
-    <div class="related-section">
-      <h2>More free tools</h2>
-      <div class="related-grid" id="related-tools-grid"></div>
-    </div>
-
-    <!-- EMBED -->
-    <div class="embed-section">
-      <h3>Embed this tool on your site</h3>
-      <p style="font-size:12px;color:var(--ink-light);margin-bottom:10px;">Free to embed. Includes a "Powered by quickutils.tools" link.</p>
-      <div class="embed-code">&lt;iframe src="https://percent.quickutils.tools/?embed=1" width="100%" height="520" frameborder="0" title="Percentage Calculator — quickutils.tools"&gt;&lt;/iframe&gt;</div>
-      <button class="embed-copy-btn" onclick="copyEmbed(this)">Copy embed code</button>
-    </div>
-
+    <div class="section-label">All tools</div>
+    <div class="tools-grid" id="tools-grid"></div>
     <div class="ad-inline">Advertisement · 728×90</div>
-
-    <!-- FAQ -->
-    <div class="content-section">
-      <h2>Frequently Asked Questions</h2>
-      <div class="faq-item">
-        <h3>What is 15% of 200?</h3>
-        <p>15% of 200 is <strong>30</strong>. To calculate: multiply 200 by 0.15 (which is 15 ÷ 100). 200 × 0.15 = 30.</p>
-      </div>
-      <div class="faq-item">
-        <h3>How do I calculate a percentage of a number?</h3>
-        <p>Divide the percentage by 100 to get a decimal, then multiply by the number. For example, 20% of 150 = (20 ÷ 100) × 150 = 0.20 × 150 = 30.</p>
-      </div>
-      <div class="faq-item">
-        <h3>How do I calculate percentage change?</h3>
-        <p>Subtract the original value from the new value, divide by the original value, then multiply by 100. Formula: ((New − Old) ÷ Old) × 100. A positive result is an increase, negative is a decrease.</p>
-      </div>
-      <div class="faq-item">
-        <h3>What is 20% of 50?</h3>
-        <p>20% of 50 is <strong>10</strong>. Calculation: 50 × 0.20 = 10.</p>
-      </div>
-      <div class="faq-item">
-        <h3>How do I find what percentage one number is of another?</h3>
-        <p>Divide the first number by the second, then multiply by 100. For example, 30 is what percent of 200? (30 ÷ 200) × 100 = 15%.</p>
-      </div>
+    <div class="about-section">
+      <h2>About QuickUtils</h2>
+      <p>QuickUtils is a growing collection of free, no-signup utility tools. Every tool runs entirely in your browser — nothing you type is ever sent to a server or stored anywhere.</p>
+      <p>Whether you need to convert a number to Roman numerals, count the words in an essay, figure out how many days old you are, or translate between binary and hexadecimal — there's a tool here for you.</p>
+      <p>New tools are added regularly. All free, forever.</p>
     </div>
-
   </main>
   <footer>
     <div class="footer-links">
-      <a href="/about.html">About</a>
       <a href="/privacy.html">Privacy Policy</a>
-      <a href="https://quickutils.tools/contact.html">Contact</a>
-      <a href="https://quickutils.tools">All Tools</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
     </div>
-    <p>&copy; 2026 <a href="https://quickutils.tools">quickutils.tools</a> — All calculations happen in your browser. No data stored.</p>
+    <p>&copy; 2026 QuickUtils.tools — All tools run in your browser. No data stored.</p>
   </footer>
-
+  <script src="tools.js"></script>
   <script>
-    const TOOL_URL = 'https://percent.quickutils.tools/';
-    const SHARE_MSG = encodeURIComponent('Free percentage calculator — instantly find X% of Y and more: ' + TOOL_URL);
-    const ENC_URL = encodeURIComponent(TOOL_URL);
-
-    // Bookmark tip
-    const isMac = /mac/i.test(navigator.platform);
-    const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
-    const isAndroid = /android/i.test(navigator.userAgent);
-    if (isIOS) document.getElementById('bookmark-text').innerHTML = '🔖 Tap share (↑) then "Add to Home Screen" to save this tool.';
-    else if (isAndroid) document.getElementById('bookmark-text').innerHTML = '🔖 Tap browser menu (⋮) then "Add to Home Screen" to save this tool.';
-    else if (isMac) document.getElementById('bookmark-text').innerHTML = 'Press <kbd>Cmd+D</kbd> to bookmark this tool.';
-
-    // Share links
-    document.getElementById('sh-tw').href = `https://twitter.com/intent/tweet?text=${SHARE_MSG}`;
-    document.getElementById('sh-fb').href = `https://www.facebook.com/sharer/sharer.php?u=${ENC_URL}`;
-    document.getElementById('sh-wa').href = `https://wa.me/?text=${SHARE_MSG}`;
-    document.getElementById('sh-rd').href = `https://www.reddit.com/submit?url=${ENC_URL}&title=${encodeURIComponent('Free percentage calculator — what is X% of Y and more')}`;
-
-    function copyLink() {
-      navigator.clipboard.writeText(TOOL_URL).then(() => {
-        const btn = document.getElementById('sh-cl');
-        btn.textContent = '✓ Copied!'; btn.classList.add('copied');
-        setTimeout(() => { btn.textContent = 'Copy link'; btn.classList.remove('copied'); }, 2000);
-      });
-    }
-    function copyEmbed(btn) {
-      navigator.clipboard.writeText(document.querySelector('.embed-code').textContent).then(() => {
-        btn.textContent = '✓ Copied!'; btn.classList.add('copied');
-        setTimeout(() => { btn.textContent = 'Copy embed code'; btn.classList.remove('copied'); }, 2000);
-      });
-    }
-
-    // Mode switching
-    let currentMode = 0;
-    function setMode(n) {
-      document.querySelectorAll('.mode-tab').forEach((t,i) => t.classList.toggle('active', i===n));
-      document.querySelectorAll('.calc-panel').forEach((p,i) => p.classList.toggle('active', i===n));
-      currentMode = n;
-    }
-
-    // Calculations
-    function fmt(n) {
-      if (isNaN(n) || !isFinite(n)) return '—';
-      return parseFloat(n.toFixed(4)).toLocaleString();
-    }
-
-    function calc0() {
-      const x = parseFloat(document.getElementById('p0-x').value);
-      const y = parseFloat(document.getElementById('p0-y').value);
-      const res = (x / 100) * y;
-      document.getElementById('rv-0').textContent = isNaN(res) ? '—' : fmt(res);
-      document.getElementById('rl-0').textContent = isNaN(res) ? 'Enter values above' : `${x}% of ${y} = ${fmt(res)}`;
-    }
-
-    function calc1() {
-      const x = parseFloat(document.getElementById('p1-x').value);
-      const y = parseFloat(document.getElementById('p1-y').value);
-      const res = (x / y) * 100;
-      document.getElementById('rv-1').textContent = isNaN(res) ? '—' : fmt(res) + '%';
-      document.getElementById('rl-1').textContent = isNaN(res) ? 'Enter values above' : `${x} is ${fmt(res)}% of ${y}`;
-    }
-
-    function calc2() {
-      const x = parseFloat(document.getElementById('p2-x').value);
-      const y = parseFloat(document.getElementById('p2-y').value);
-      const res = ((y - x) / x) * 100;
-      const sign = res >= 0 ? '+' : '';
-      document.getElementById('rv-2').textContent = isNaN(res) ? '—' : sign + fmt(res) + '%';
-      document.getElementById('rl-2').textContent = isNaN(res) ? 'Enter values above' : `${res >= 0 ? 'Increase' : 'Decrease'} of ${Math.abs(res).toFixed(2)}%`;
-    }
-
-    function quickCalc(x, y) {
-      setMode(0);
-      document.getElementById('p0-x').value = x;
-      document.getElementById('p0-y').value = y;
-      calc0();
-    }
-
-    // Embed mode
-    if (new URLSearchParams(window.location.search).get('embed') === '1') {
-      document.querySelector('.ad-banner-top').style.display = 'none';
-      document.querySelector('header').style.display = 'none';
-      document.querySelector('.related-section') && (document.querySelector('.related-section').style.display = 'none');
-      document.querySelector('.embed-section') && (document.querySelector('.embed-section').style.display = 'none');
-      document.querySelector('.content-section') && (document.querySelector('.content-section').style.display = 'none');
-      document.querySelector('.ad-inline') && (document.querySelector('.ad-inline').style.display = 'none');
-      document.querySelector('footer').innerHTML = '<div style="text-align:center;padding:12px;font-size:12px;font-family:sans-serif;color:#71717A;">Powered by <a href="https://quickutils.tools" target="_blank" style="color:#7C3AED;text-decoration:none;font-weight:500;">quickutils.tools</a></div>';
-    }
+    // Render all tools on the homepage
+    const grid = document.getElementById('tools-grid');
+    grid.innerHTML = QUICKUTILS_TOOLS.map(t => `
+      <a class="tool-card" href="${t.url}">
+        <span class="tool-emoji">${t.emoji}</span>
+        <div class="tool-name">${t.name}</div>
+        <div class="tool-desc">${t.desc}</div>
+        <div class="tool-link">Open tool →</div>
+      </a>
+    `).join('');
   </script>
-  <script src="https://quickutils.tools/tools.js" onload="renderRelatedTools({currentUrl:'https://percent.quickutils.tools/'})"></script>
 </body>
 </html>
