@@ -64,6 +64,30 @@ const QUICKUTILS_TOOLS = [
     desc: "Generate random numbers in any range, any quantity",
     emoji: "🎲"
   },
+  {
+    name: "Unix Timestamp Converter",
+    url: "https://timestamp.quickutils.tools",
+    desc: "Convert epoch timestamps to dates and back. Live current time.",
+    emoji: "🕐"
+  },
+  {
+    name: "Color Hex & RGB Converter",
+    url: "https://colorhex.quickutils.tools",
+    desc: "Convert between HEX, RGB, HSL and CMYK with color picker",
+    emoji: "🎨"
+  },
+  {
+    name: "Password Generator",
+    url: "https://pwgen.quickutils.tools",
+    desc: "Generate strong secure passwords. Runs in your browser only.",
+    emoji: "🔐"
+  },
+  {
+    name: "Readability Score",
+    url: "https://readability.quickutils.tools",
+    desc: "Check Flesch-Kincaid, Gunning Fog and SMOG reading levels",
+    emoji: "📖"
+  },
 ];
 
 // Renders the "More free tools" grid, excluding the current tool by URL.
