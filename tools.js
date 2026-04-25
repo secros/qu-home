@@ -34,6 +34,36 @@ const QUICKUTILS_TOOLS = [
     desc: "MELD 3.0, Child-Pugh, VOCAL-Penn, Hepatitis B Serology",
     emoji: "⚕️"
   },
+  {
+    name: "Percentage Calculator",
+    url: "https://percent.quickutils.tools",
+    desc: "What is X% of Y? Percentage change and more",
+    emoji: "💯"
+  },
+  {
+    name: "Text Case Converter",
+    url: "https://textcase.quickutils.tools",
+    desc: "UPPER, lower, Title, camelCase, snake_case and more",
+    emoji: "🔡"
+  },
+  {
+    name: "BMI Calculator",
+    url: "https://bmi.quickutils.tools",
+    desc: "Calculate Body Mass Index in metric or imperial",
+    emoji: "⚖️"
+  },
+  {
+    name: "Tip Calculator",
+    url: "https://tipcalc.quickutils.tools",
+    desc: "Calculate tip and split the bill between friends",
+    emoji: "🍽️"
+  },
+  {
+    name: "Random Number Generator",
+    url: "https://rng.quickutils.tools",
+    desc: "Generate random numbers in any range, any quantity",
+    emoji: "🎲"
+  },
 ];
 
 // Renders the "More free tools" grid, excluding the current tool by URL.
