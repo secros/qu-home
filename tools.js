@@ -147,6 +147,54 @@ const QUICKUTILS_TOOLS = [
     desc: "See how investments grow over time with compound interest",
     emoji: "📈"
   },
+  {
+    name: "Salary to Hourly Calculator",
+    url: "https://salary.quickutils.tools",
+    desc: "Convert annual salary to hourly, daily, weekly, and monthly pay",
+    emoji: "💰"
+  },
+  {
+    name: "Stopwatch & Timer",
+    url: "https://stopwatch.quickutils.tools",
+    desc: "Precise stopwatch with lap tracking and countdown timer",
+    emoji: "⏱️"
+  },
+  {
+    name: "Discount Calculator",
+    url: "https://discount.quickutils.tools",
+    desc: "Sale price, percent off, or original price from any discount",
+    emoji: "🏷️"
+  },
+  {
+    name: "Body Fat Calculator",
+    url: "https://bodyfat.quickutils.tools",
+    desc: "Navy method + BMI method body fat percentage estimator",
+    emoji: "💪"
+  },
+  {
+    name: "Water Intake Calculator",
+    url: "https://water.quickutils.tools",
+    desc: "Daily water needs by weight, activity level, and climate",
+    emoji: "💧"
+  },
+  {
+    name: "Pace Calculator",
+    url: "https://pace.quickutils.tools",
+    desc: "Running pace, speed, and finish time for any race distance",
+    emoji: "🏃"
+  },
+  {
+    name: "Due Date Calculator",
+    url: "https://duedate.quickutils.tools",
+    desc: "Pregnancy due date from LMP, conception, or IVF transfer date",
+    emoji: "🤰"
+  },
+  {
+    name: "Scientific Calculator",
+    url: "https://sci.quickutils.tools",
+    desc: "Full scientific calculator with trig, log, exponents, and memory",
+    emoji: "🧮"
+  },
 ];
 
 // Renders the "More free tools" grid, excluding the current tool by URL.
