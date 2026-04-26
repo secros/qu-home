@@ -2,7 +2,6 @@
 // Hosted at: https://quickutils.tools/tools.js
 // To add a new tool: add one entry to the QUICKUTILS_TOOLS array below.
 // All tool pages load this file and render their "More free tools" section automatically.
-
 const QUICKUTILS_TOOLS = [
   {
     name: "Roman Numeral Converter",
@@ -88,30 +87,52 @@ const QUICKUTILS_TOOLS = [
     desc: "Check Flesch-Kincaid, Gunning Fog and SMOG reading levels",
     emoji: "📖"
   },
+  {
+    name: "Aspect Ratio Calculator",
+    url: "https://aspratio.quickutils.tools",
+    desc: "Calculate aspect ratios for screens, photos, and video",
+    emoji: "📐"
+  },
+  {
+    name: "Unit Converter",
+    url: "https://unitcon.quickutils.tools",
+    desc: "Convert length, weight, temperature, volume, area & speed",
+    emoji: "⚖️"
+  },
+  {
+    name: "Loan Calculator",
+    url: "https://loan.quickutils.tools",
+    desc: "Monthly payment, total interest & amortization schedule",
+    emoji: "🏦"
+  },
+  {
+    name: "Grade Calculator",
+    url: "https://gradecalc.quickutils.tools",
+    desc: "Weighted average, GPA, and final exam grade needed",
+    emoji: "🎓"
+  },
+  {
+    name: "Countdown Timer",
+    url: "https://countdown.quickutils.tools",
+    desc: "Count down to any event, birthday, or deadline",
+    emoji: "⏳"
+  },
 ];
 
 // Renders the "More free tools" grid, excluding the current tool by URL.
-// Call this after the DOM is ready.
-// Options:
-//   targetId   — id of the container element to render into (default: "related-tools-grid")
-//   currentUrl — URL of the current tool to exclude (default: window.location.origin)
-//   max        — max number of tools to show (default: 4)
 function renderRelatedTools(options = {}) {
-  const targetId  = options.targetId   || 'related-tools-grid';
+  const targetId   = options.targetId   || 'related-tools-grid';
   const currentUrl = options.currentUrl || window.location.origin + '/';
-  const max       = options.max        || 4;
-  const container = document.getElementById(targetId);
+  const max        = options.max        || 4;
+  const container  = document.getElementById(targetId);
   if (!container) return;
-
   const others = QUICKUTILS_TOOLS
     .filter(t => !currentUrl.startsWith(t.url))
     .slice(0, max);
-
   if (others.length === 0) {
     container.closest('.related-section').style.display = 'none';
     return;
   }
-
   container.innerHTML = others.map(t => `
     <a class="related-card" href="${t.url}">
       <div class="related-card-emoji">${t.emoji}</div>
