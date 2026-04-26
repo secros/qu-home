@@ -117,6 +117,36 @@ const QUICKUTILS_TOOLS = [
     desc: "Count down to any event, birthday, or deadline",
     emoji: "⏳"
   },
+  {
+    name: "Sleep Calculator",
+    url: "https://sleep.quickutils.tools",
+    desc: "Best bedtime and wake time based on 90-minute sleep cycles",
+    emoji: "🌙"
+  },
+  {
+    name: "Calorie Calculator",
+    url: "https://calorie.quickutils.tools",
+    desc: "Daily calorie needs, BMR and TDEE by age, weight and activity",
+    emoji: "🔥"
+  },
+  {
+    name: "Currency Converter",
+    url: "https://currency.quickutils.tools",
+    desc: "Live exchange rates for 160+ currencies, updated daily",
+    emoji: "💱"
+  },
+  {
+    name: "Date Calculator",
+    url: "https://date.quickutils.tools",
+    desc: "Days between dates, add/subtract days, day of the week",
+    emoji: "📅"
+  },
+  {
+    name: "Compound Interest Calculator",
+    url: "https://compound.quickutils.tools",
+    desc: "See how investments grow over time with compound interest",
+    emoji: "📈"
+  },
 ];
 
 // Renders the "More free tools" grid, excluding the current tool by URL.
